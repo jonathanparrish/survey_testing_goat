@@ -17,4 +17,9 @@ class Survey < ActiveRecord::Base
       q.question_type != "Choice" || q.options.length > 0
     end
   end
+
+  def survey_names
+    select("title AS title")
+    # unsure about the syntax here..
+  end
 end

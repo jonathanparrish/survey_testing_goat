@@ -5,26 +5,35 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Author.create(name: "Emperor Goatimus", email: "eg@tiy.com", password: "goat")
+Author.create!(name: "Emperor Goatimus", email: "eg@tiy.com", password: "goat")
 
-100.times do
-  Author.create(name: Faker::Name.name,
+1000.times do
+  Author.create!(name: Faker::Name.name,
                 email: Faker::Internet.email,
                 password: "goat")
 end
 
 all_authors = Author.all
 question_types = ["Yes/No", "Choice", "Short Answer", "Long Answer"]
+all_submissions = Submission.all
 
-100.times do
-  survey = Survey.create(title: Faker::Commerce.product_name,
-                description: "See above",
-                author: all_authors.sample)
+1000.times do
+  Submission.create!
+end
+
+1000.times do
+  survey = Survey.create!(title: Faker::Commerce.product_name,
+                         description: "See above",
+                         author: all_authors.sample)
   3.times do |i|
-    survey.questions << Question.create(order_number: i,
-                  question_type: question_types.sample,
-                  question_text: Faker::Company.bs + "?",
-                  description: "See above",
-                  survey: survey)
+    survey.questions << Question.create!(order_number: i,
+                                        question_type: question_types.sample,
+                                        question_text: Faker::Company.bs + "?",
+                                        description: "See above",
+                                        survey: survey)
+    survey.questions.each do |q|
+      q.responses << Response.create!(response_text: Faker::Hacker.noun,
+                                     submission_id: all_submissions.sample)
+    end
   end
 end

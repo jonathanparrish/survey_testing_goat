@@ -19,7 +19,6 @@ class Survey < ActiveRecord::Base
   end
 
   def survey_names
-    select("title AS title")
-    # unsure about the syntax here..
+    Survey.authors.order(:id).map{|s| s.title, s.authors.first.email}
   end
 end

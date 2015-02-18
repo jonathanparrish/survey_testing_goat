@@ -18,7 +18,9 @@ class Survey < ActiveRecord::Base
     end
   end
 
-  def survey_names
-    Survey.authors.order(:id).map{|s| s.title, s.authors.first.email}
+  def all_with_author_emails
+    joins("LEFT JOIN authors ON surveys.author_id=authors.id").
+      select("title, email AS author_email").all
+    end
   end
 end

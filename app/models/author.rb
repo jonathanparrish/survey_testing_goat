@@ -27,4 +27,10 @@ class Author < ActiveRecord::Base
   def self.find_most_recent
     order(created_at: :desc).first
   end
+
+  def no_surveys_created
+    joins("LEFT JOIN authors ON surveys.author_id=authors.id").
+      select("name AS author.name").
+        where("surveys.author_id IS NULL").all
+  end
 end

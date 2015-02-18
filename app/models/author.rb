@@ -20,8 +20,8 @@ class Author < ActiveRecord::Base
   #         order(:id).where("surveys.id IS NULL").all
   # end
 
-  def self.find_specific_email
-    where(email: "shakespeare@example.com").all
+  def self.find_specific_email(address)
+    where(email: address).all
   end
 
   def self.find_most_recent
@@ -30,7 +30,6 @@ class Author < ActiveRecord::Base
 
   def no_surveys_created
     joins("LEFT JOIN authors ON surveys.author_id=authors.id").
-      select("name AS author.name").
         where("surveys.author_id IS NULL").all
   end
 end

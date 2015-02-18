@@ -26,6 +26,6 @@ class Question < ActiveRecord::Base
   def self.type_count
     select("question_type, COUNT(question_type) AS question_type_count").
         group(:question_type).
-        order("question_type").all
+        order(:question_type).all
   end
 end

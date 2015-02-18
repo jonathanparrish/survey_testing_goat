@@ -35,7 +35,7 @@ gem 'purecss-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'minitest-reporters', '1.0.5'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -46,6 +46,10 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'rails-footnotes'
+end
+
+group :test do
+  gem 'minitest-reporters', '1.0.5'
 end
 
 group :production do

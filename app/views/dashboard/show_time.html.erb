@@ -1,3 +1,7 @@
 <h1><%= Time.now.strftime("%H:%M") %></h1>
 
 <%= link_to "The happy place", "www.disney.com" %>
+
+<%= @surveys.each do |s| %>
+  <p class= "survey_title"><%= s.title %></p>
+<% end %>

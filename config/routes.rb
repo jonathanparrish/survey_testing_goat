@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get 'dashboard/show_time'
+  get 'dashboard/render_time'
+  get 'dashboard/go_to_time'
 
   get 'sessions/log_in'
   post 'sessions/log_in'
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :submissions
   resources :surveys
-  
+
   root 'surveys#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
+# that your fixtures ran (this will require you to write at least one fixture).
+
+
 genesis:
   name: Genesis Gutmann
   email: zane@cain.org

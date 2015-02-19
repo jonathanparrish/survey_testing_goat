@@ -28,7 +28,7 @@ class DashboardControllerTest < ActionController::TestCase
     assert_response :success
     assert_template "show_time"
   end
-
+# that an expected redirect actually occurs
   test "should get go_to_time" do
     get :go_to_time
     assert_redirected_to dashboard_show_time_path
